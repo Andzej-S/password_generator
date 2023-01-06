@@ -88,6 +88,14 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+// Select the button
+var button = document.querySelector('#generate');
+
+// Add an event listener to the button
+button.addEventListener('click', function() {
+  getPasswordOptions();
+});
+
 // Function to prompt user for password options
 function getPasswordOptions() {
   passwordLength = prompt("How many characters you want your password to be?");
@@ -103,7 +111,6 @@ function getPasswordOptions() {
   includeNumeric = confirm("Do you want to use numeric values?");
   includeSpecial = confirm("Do you want to use special characters?");
 }
-getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandomOption() {
