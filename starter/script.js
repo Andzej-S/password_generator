@@ -89,10 +89,10 @@ var upperCasedCharacters = [
 ];
 
 // Select the button
-var button = document.querySelector('#generate');
+var button = document.querySelector("#generate");
 
 // Add an event listener to the button
-button.addEventListener('click', function() {
+button.addEventListener("click", function() {
   getPasswordOptions();
 });
 
@@ -106,10 +106,16 @@ function getPasswordOptions() {
     alert("Please enter a password length between 10 and 64 characters using numbers only.");
     passwordLength = prompt("How many characters you want your password to be?");
   }
+
   includeLowercase = confirm("Do you want to use lowercase characters?");
   includeUppercase = confirm("Do you want to use uppercase characters?");
   includeNumeric = confirm("Do you want to use numeric values?");
   includeSpecial = confirm("Do you want to use special characters?");
+
+  if (!includeLowercase && !includeUppercase && !includeNumeric && !includeSpecial) {
+    alert("Please select at least one character type.");
+    getPasswordOptions();
+  }
 }
 
 // Function for getting a random element from an array
