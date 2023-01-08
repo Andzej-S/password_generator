@@ -88,6 +88,12 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+let passwordLength;
+let includeLowercase;
+let includeUppercase;
+let includeNumeric;
+let includeSpecial;
+
 // Select the button
 var button = document.querySelector("#generate");
 
@@ -119,14 +125,32 @@ function getPasswordOptions() {
 }
 
 // Function for getting a random element from an array
-function getRandomOption() {
-
+function getRandomOption(array) {
+  return array[Math.floor(Math.random() * array.length)];
 }
-
 
 // Function to generate password with user input
 function generatePassword() {
-
+// Create an empty string that will hold the password
+var password = "";
+// Create an array that includes all of the character types the user has selected
+var characterArray = [];
+if (includeLowercase) {
+  characterArray = characterArray.concat(lowerCasedCharacters);
+}
+if (includeUppercase) {
+  characterArray = characterArray.concat(upperCasedCharacters);
+}
+if (includeNumeric) {
+  characterArray = characterArray.concat(numericCharacters);
+}
+if (includeSpecial) {
+  characterArray = characterArray.concat(specialCharacters);
+}
+for (var i = 0; i < passwordLength; i++) {
+  password = password + getRandomOption(characterArray);
+}
+return password;
 }
 
 // Get references to the #generate element
